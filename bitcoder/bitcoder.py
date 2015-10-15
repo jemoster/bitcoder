@@ -13,9 +13,9 @@ class DescriptorAccessMixin:
 
 
 class Field(object):
-    def __init__(self, start, len):
+    def __init__(self, start, length):
         self._start = start
-        self._len = len
+        self._len = length
 
     def __str__(self):
         return 'Field:' + ','.join(map(str, xrange(self._start, self._start+self._len)))
@@ -23,6 +23,10 @@ class Field(object):
     @property
     def start(self):
         return self._start
+
+    @property
+    def length(self):
+        return self._len
 
 
 class Bool(Field):
@@ -45,7 +49,7 @@ class Encoded(DescriptorAccessMixin):
             for x in xrange(bit, field.start):
                 desc += formatter.format(bit, 'Reserved')
                 bit += 1
-            for x in xrange(bit, bit+field._len):
+            for x in xrange(bit, bit+field.length):
                 desc += formatter.format(bit, name)
                 bit += 1
         for x in xrange(bit, self.bits):

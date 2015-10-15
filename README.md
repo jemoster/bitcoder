@@ -27,3 +27,35 @@ Produces formatted descriptions such as:
     13:	Reserved
     14:	Reserved
     15:	Reserved
+
+Or into various language specific formats such as:
+
+## c
+
+    struct Example16Bytes
+    {
+        unsigned int reserved_0: 1
+        unsigned int gps_enabled: 1
+        unsigned int latitude: 4
+        unsigned int reserved_1: 1
+        unsigned int sbas_enabled: 1
+    } pack;
+    
+## json
+
+    {
+      "Example16Bytes": {
+        "gps_enabled": {
+          "mask": 4, 
+          "start": 2
+        }, 
+        "latitude": {
+          "mask": 8, 
+          "start": 3
+        }, 
+        "sbas_enabled": {
+          "mask": 1024, 
+          "start": 10
+        }
+      }
+    }
