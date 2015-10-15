@@ -41,6 +41,15 @@ Or into various language specific formats such as:
         unsigned int sbas_enabled: 1
     } pack;
     
+## C Sharp
+
+    public const int gps_enabled_mask = 4;
+    public const int gps_enabled_start = 2;
+    public const int latitude_mask = 8;
+    public const int latitude_start = 3;
+    public const int sbas_enabled_mask = 1024;
+    public const int sbas_enabled_start = 10;
+    
 ## json
 
     {
